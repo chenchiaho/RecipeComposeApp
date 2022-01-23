@@ -24,59 +24,6 @@ import androidx.compose.ui.unit.sp
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            val scrollState = rememberScrollState()
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .background(color = Color(0xFFF2F2F2))
-                .verticalScroll(scrollState)) {
-                Image(
-                    painterResource(
-                        id = R.drawable.happy_meal_small
-                    ),
-                    contentDescription = "Happy Meal",
-                    modifier = Modifier.height(300.dp),
-                    contentScale = ContentScale.Crop
-                )
-                Column(
-                    modifier = Modifier
-                        .padding(16.dp)
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text(
-                            text = "Happy Meal",
-                            style = TextStyle(
-                                fontSize = 26.sp
-                            )
-                        )
-                        Text(
-                            text = "$5.99",
-                            style = TextStyle(
-                                fontSize = 17.sp,
-                                color = Color.Green
-                            ),
-                            modifier = Modifier.align(Alignment.CenterVertically)
-                        )
-                    }
-                    Spacer(modifier = Modifier.padding(top = 10.dp))
-                    Text(
-                        text = "800 cal",
-                        style = TextStyle(
-                            fontSize = 17.sp
-                        ))
-
-                }
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                    ) {
-                    Text(text = "ORDER NOW")
-                }
-            }
-
-        }
+        setContentView(R.layout.activity_main)
     }
 }
