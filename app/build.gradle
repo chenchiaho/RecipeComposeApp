@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 //    id 'dagger.hilt.android.plugin'
 }
 
@@ -41,7 +42,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-//        kotlinCompilerVersion '1.5.30'
     }
     packagingOptions {
         resources {
