@@ -1,8 +1,7 @@
 package com.example.recipecomposeapp.di
 
-import android.app.Application
 import android.content.Context
-import com.example.recipecomposeapp.BaseApplication
+import com.example.recipecomposeapp.presentation.BaseApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

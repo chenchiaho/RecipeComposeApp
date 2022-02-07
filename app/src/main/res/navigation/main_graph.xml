@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/recipeFragment"
-        android:name="com.example.recipecomposeapp.RecipeFragment"
+        android:name="com.example.recipecomposeapp.presentation.ui.recipe.RecipeFragment"
         android:label="fragment_recipe"
         tools:layout="@layout/fragment_recipe" />
     <fragment
         android:id="@+id/recipeListFragment"
-        android:name="com.example.recipecomposeapp.RecipeListFragment"
+        android:name="com.example.recipecomposeapp.presentation.ui.recipe_list.RecipeListFragment"
         android:label="fragment_recipe_list"
         tools:layout="@layout/fragment_recipe_list" >
         <action
