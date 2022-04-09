@@ -1,8 +1,15 @@
 package com.example.recipecomposeapp.presentation.ui.recipe_list
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.recipecomposeapp.domain.model.Recipe
 import com.example.recipecomposeapp.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -11,15 +18,20 @@ class RecipeListViewModel
 @Inject
 constructor(
     private val repository: RecipeRepository,
-    private @Named("auth_token") val token: String
+    @Named("auth_token") private val token: String
 ): ViewModel() {
 
-    init {
-        println("VIEWMODEL: $repository")
-        println("VIEWMODEL: $token")
-    }
+    val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
 
-    fun getRepo() = repository
-    fun getToken() = token
+    init {
+        viewModelScope.launch {
+            val result = repository.search(
+                token = token,
+                page = 1,
+                query = "chicken"
+            )
+            recipes.value = result
+        }
+    }
 
 }

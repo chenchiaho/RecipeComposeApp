@@ -1,6 +1,7 @@
 package com.example.recipecomposeapp.presentation.ui.recipe_list
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.recipecomposeapp.R
+import com.example.recipecomposeapp.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,16 +29,21 @@ class RecipeListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("FRAGMENT: ${viewModel.getRepo()}")
-        println("FRAGMENT: ${viewModel.getToken()}")
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return ComposeView(requireContext()).apply {
             setContent {
+                val recipes = viewModel.recipes.value
+                for (recipe in recipes) {
+                    Log.d(TAG, "${recipe.title}")
+                }
+
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "RECIPE LIST",
